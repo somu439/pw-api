@@ -31,7 +31,7 @@ Feature: POST API Tests - JSONPlaceholder Posts
     And the response JSON should have field "userId" with value "2"
 
   Scenario: Create a new user
-    Given the request body is:
+    Given the request body is: 
       """
       {
         "name": "John Tester",
@@ -39,7 +39,7 @@ Feature: POST API Tests - JSONPlaceholder Posts
         "email": "john@test.com"
       }
       """
-      
+
     When I send a POST request to "/users"
     Then the response status code should be 201
     And the response JSON should contain field "id"
