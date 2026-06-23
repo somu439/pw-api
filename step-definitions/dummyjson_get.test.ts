@@ -36,3 +36,17 @@ test.only('post api call', async({request})=>{
     
 })
 
+
+test('post request from json file', async ({ request }) => {
+    const jsonFile=require('../../test-data/post_req_body.json')
+   const postResp =await request.post('/booking', {
+        data:jsonFile})
+        
+        const respBody= await postResp.json()
+        console.log(respBody) 
+        expect(postResp.status()).toBe(200)  
+        expect(postResp.ok()).toBeTruthy();   
+        expect(respBody.booking).toHaveProperty("firstname","lets talk")
+        expect(respBody.booking.bookingdates).toHaveProperty("checkin","2018-01-01")
+
+});
